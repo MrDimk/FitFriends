@@ -1,5 +1,7 @@
 import {UserRole} from './user-role.enum';
 import {UserLocation} from './user-location.enum';
+import {UserFitnessLevel} from './user-fitness-level.enum';
+import {WorkoutType} from './workout-type.enum';
 
 export interface UserInterface {
   _id?: string;
@@ -13,5 +15,6 @@ export interface UserInterface {
   passwordHash: string;
   avatarImage?: string;
   pageImage?: string;
-  createdAt?: Date;
+  fitnessLevel: UserFitnessLevel;
+  workoutTypes: WorkoutType[];
 }
