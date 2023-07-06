@@ -12,3 +12,7 @@ export function isCommonUser(user: CommonUserInterface | TrainerUserInterface): 
 export function isTrainerUser(user: CommonUserInterface | TrainerUserInterface): user is TrainerUserInterface {
   return user.role === UserRole.Trainer;
 }
+
+export function getMongoConnectionString({username, password, host, port, databaseName, authDatabase}): string {
+  return `mongodb://${username}:${password}@${host}:${port}/${databaseName}?authSource=${authDatabase}`;
+}

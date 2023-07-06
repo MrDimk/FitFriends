@@ -9,12 +9,13 @@ import {
 } from '@backend/shared/shared-types';
 import {compare, genSalt, hash} from 'bcrypt';
 import {SALT_ROUNDS} from './user.const';
+import {UserGender} from '@backend/shared/shared-types';
 
 export class UserEntity implements CommonUserInterface, TrainerUserInterface {
   public _id: string;
   public email: string;
   public fitnessLevel: UserFitnessLevel;
-  public gender: string;
+  public gender: UserGender;
   public location: UserLocation;
   public name: string;
   public description: string;

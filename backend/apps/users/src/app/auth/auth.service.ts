@@ -1,17 +1,22 @@
 import {ConflictException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
-import {UserMemoryRepository} from '../user/user-memory.repository';
 import {CreateUserDto} from './dto/create-user.dto';
 import {CommonUserInterface, TrainerUserInterface, UserRole} from '@backend/shared/shared-types';
 import dayjs from 'dayjs';
 import {AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG, INVALID_USER_ROLE} from './auth.const';
 import {UserEntity} from '../user/user.entity';
 import {LoginUserDto} from './dto/login-user.dto';
+import {ConfigService} from '@nestjs/config';
+import {UserRepository} from '../user/user.repository';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly userRepository: UserMemoryRepository
-  ) {}
+    private readonly userRepository: UserRepository,
+    private readonly configService: ConfigService
+  ) {
+    console.log(configService.get<string>('db.host'));
+    console.log(configService.get<string>('db.user'));
+  }
 
   public async register(dto: CreateUserDto) {
     const {role, password, ...userData} = dto;
@@ -62,6 +67,7 @@ export class AuthService {
   }
 
   public async getUser(id: string) {
+    console.log('id is: ', id);
     return this.userRepository.findById(id);
   }
 }

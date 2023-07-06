@@ -2,13 +2,14 @@ import {UserRole} from './user-role.enum';
 import {UserLocation} from './user-location.enum';
 import {UserFitnessLevel} from './user-fitness-level.enum';
 import {WorkoutType} from './workout-type.enum';
+import {UserGender} from './user-gender.enum';
 
 export interface UserInterface {
   _id?: string;
   name: string;
   email: string;
   description?: string;
-  gender: string;
+  gender: UserGender;
   birthDate?: Date;
   role: UserRole;
   location: UserLocation;
