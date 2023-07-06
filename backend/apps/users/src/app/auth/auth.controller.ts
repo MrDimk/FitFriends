@@ -26,9 +26,10 @@ export class AuthController {
     console.log('newUser: ', newUser);
     if(newUser.role === UserRole.User) {
       console.log('role User detected');
-      fillObject(CommonUserRdo, newUser);
+      console.log(newUser);
+      return fillObject(CommonUserRdo, newUser);
     } else if(newUser.role === UserRole.Trainer) {
-      fillObject(TrainerUserRdo, newUser);
+      return fillObject(TrainerUserRdo, newUser);
     }
   }
 
@@ -61,9 +62,9 @@ export class AuthController {
   public async show(@Param('id') id: string) {
     const existUser = await this.authService.getUser(id);
     if(existUser.role === UserRole.User) {
-      fillObject(CommonUserRdo, existUser);
+      return fillObject(CommonUserRdo, existUser);
     } else if(existUser.role === UserRole.Trainer) {
-      fillObject(TrainerUserRdo, existUser);
+      return fillObject(TrainerUserRdo, existUser);
     }
   }
 }

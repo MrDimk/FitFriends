@@ -3,7 +3,7 @@ POST http://localhost:3002/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "commonuser8@example.com",
+  "email": "commonuser11@example.com",
   "fitnessLevel": "beginner",
   "gender": "male",
   "location": "Pionerskaya",
@@ -28,7 +28,7 @@ POST http://localhost:3002/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "traineruser@example.com",
+  "email": "traineruser2@example.com",
   "fitnessLevel": "professional",
   "gender": "female",
   "location": "Pionerskaya",
@@ -48,7 +48,7 @@ Content-Type: application/json
 ###
 
 # Get user by ID
-GET http://localhost:3002/api/auth/64a5d63f8de9c8ec8105e231 HTTP/1.1
+GET http://localhost:3002/api/auth/64a713b6c0219632e0df8071 HTTP/1.1
 
 ###
 
