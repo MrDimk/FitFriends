@@ -15,9 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@backend/config/config-users": [
-        "libs/config/config-users/src/index.ts"
+      "@backend/config/config-uploader": [
+        "libs/config/config-uploader/src/index.ts"
       ],
+      "@backend/config/config-users": ["libs/config/config-users/src/index.ts"],
+      "@backend/models/reviews-models": [
+        "libs/models/reviews-models/src/index.ts"
+      ],
+      "@backend/shared/shared-pipes": ["libs/shared/shared-pipes/src/index.ts"],
       "@backend/shared/shared-types": ["libs/shared/shared-types/src/index.ts"],
       "@backend/util/util-core": ["libs/util/util-core/src/index.ts"],
       "@backend/util/util-types": ["libs/util/util-types/src/index.ts"]

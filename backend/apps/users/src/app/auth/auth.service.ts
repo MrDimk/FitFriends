@@ -1,21 +1,27 @@
 import {ConflictException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
-import {CommonUserInterface, TrainerUserInterface, UserRole} from '@backend/shared/shared-types';
+import {
+  CommonUserInterface,
+  TokenPayloadInterface,
+  TrainerUserInterface,
+  UserInterface,
+  UserRole
+} from '@backend/shared/shared-types';
 import dayjs from 'dayjs';
 import {AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG, INVALID_USER_ROLE} from './auth.const';
 import {UserEntity} from '../user/user.entity';
 import {LoginUserDto} from './dto/login-user.dto';
 import {ConfigService} from '@nestjs/config';
 import {UserRepository} from '../user/user.repository';
+import {JwtService} from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
+    private readonly jwtService: JwtService,
   ) {
-    console.log(configService.get<string>('db.host'));
-    console.log(configService.get<string>('db.user'));
   }
 
   public async register(dto: CreateUserDto) {
@@ -67,7 +73,19 @@ export class AuthService {
   }
 
   public async getUser(id: string) {
-    console.log('id is: ', id);
     return this.userRepository.findById(id);
+  }
+
+  public async createUserToken(user: UserInterface) {
+    const payload: TokenPayloadInterface = {
+      sub: user._id,
+      email: user.email,
+      role: user.role,
+      name: user.name
+    };
+
+    return {
+      accessToken: await this.jwtService.signAsync(payload),
+    }
   }
 }

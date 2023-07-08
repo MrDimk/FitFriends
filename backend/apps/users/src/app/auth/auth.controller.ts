@@ -1,4 +1,4 @@
-import {Body, Controller, Post, Get, Param, HttpStatus} from '@nestjs/common';
+import {Body, Controller, Post, Get, Param, HttpStatus, UseGuards} from '@nestjs/common';
 import {AuthService} from './auth.service';
 import {CreateUserDto} from './dto/create-user.dto';
 import {UserRole} from '@backend/shared/shared-types';
@@ -8,6 +8,8 @@ import {fillObject} from '@backend/util/util-core';
 import {LoginUserDto} from './dto/login-user.dto';
 import {LoggedUserRdo} from './rdo/logged-user.rdo';
 import {ApiResponse, ApiTags, getSchemaPath} from '@nestjs/swagger';
+import {MongoidValidationPipe} from '@backend/shared/shared-pipes';
+import {JwtAuthGuard} from './guards/jwt-auth.guard';
 
 @ApiTags('Authentication')
 @Controller('auth')
@@ -23,10 +25,7 @@ export class AuthController {
   @Post('register')
   public async create(@Body() dto: CreateUserDto) {
     const newUser = await this.authService.register(dto);
-    console.log('newUser: ', newUser);
     if(newUser.role === UserRole.User) {
-      console.log('role User detected');
-      console.log(newUser);
       return fillObject(CommonUserRdo, newUser);
     } else if(newUser.role === UserRole.Trainer) {
       return fillObject(TrainerUserRdo, newUser);
@@ -45,7 +44,8 @@ export class AuthController {
   @Post('login')
   public async login(@Body() dto: LoginUserDto) {
     const verifiedUser = await this.authService.verifyUser(dto);
-    return fillObject(LoggedUserRdo, verifiedUser);
+    const loggedUser = await this.authService.createUserToken(verifiedUser);
+    return fillObject(LoggedUserRdo, Object.assign(verifiedUser, loggedUser));
   }
 
   @ApiResponse({
@@ -58,8 +58,9 @@ export class AuthController {
       ],
     },
   })
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
-  public async show(@Param('id') id: string) {
+  public async show(@Param('id', MongoidValidationPipe) id: string) {
     const existUser = await this.authService.getUser(id);
     if(existUser.role === UserRole.User) {
       return fillObject(CommonUserRdo, existUser);

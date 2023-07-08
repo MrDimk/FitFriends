@@ -7,3 +7,4 @@ export * from './lib/workout-type.enum';
 export * from './lib/user-location.enum';
 export * from './lib/user-fitness-level.enum';
 export * from './lib/user-gender.enum';
+export * from './lib/token-payload.interface';

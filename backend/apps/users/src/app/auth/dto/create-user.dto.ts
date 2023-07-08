@@ -7,12 +7,15 @@ import {
   WorkoutType
 } from '@backend/shared/shared-types';
 import {ApiProperty} from '@nestjs/swagger';
+import {IsEmail, IsISO8601, IsString, Length} from 'class-validator';
+import {USER_FIELDS, USER_VALIDATION_ERRORS} from '../auth.const';
 
 export class CreateUserDto {
   @ApiProperty({
     description: 'User unique address',
     example: 'user@user.ru'
   })
+  @IsEmail({}, { message: USER_VALIDATION_ERRORS.UserEmailNotValid })
   public email: string;
 
   @ApiProperty({
@@ -40,6 +43,8 @@ export class CreateUserDto {
     description: 'User name',
     example: 'Hulk',
   })
+  @IsString()
+  @Length(USER_FIELDS.UserNameMin, USER_FIELDS.UserNameMax, { message: USER_VALIDATION_ERRORS.UserNameLength })
   public name: string;
 
   @ApiProperty({
@@ -52,12 +57,15 @@ export class CreateUserDto {
     description: 'User birth date',
     example: '1980-03-01'
   })
+  @IsISO8601({}, { message: USER_VALIDATION_ERRORS.UserDateBirthNotValid })
   public birthDate?: Date;
 
   @ApiProperty({
     description: 'User password',
     example: 'qwerty12345'
   })
+  @IsString()
+  @Length(USER_FIELDS.PasswordMin, USER_FIELDS.PasswordMax, { message: USER_VALIDATION_ERRORS.UserPasswordLength })
   public password: string;
 
   @ApiProperty({

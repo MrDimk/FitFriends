@@ -14,7 +14,6 @@ export class UserRepository implements CRUDRepository<UserEntity, string, Common
 
   public async create(item: UserEntity): Promise<CommonUserInterface | TrainerUserInterface> {
     const newUser = new this.userModel(item);
-    console.log('Create method in user-repository, new user: ', newUser);
     return newUser.save();
   }
 
