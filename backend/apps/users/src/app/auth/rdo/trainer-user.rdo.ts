@@ -1,6 +1,7 @@
 import {Expose, Transform} from 'class-transformer';
-import {UserFitnessLevel, UserLocation, UserRole, WorkoutType, UserGender} from '@backend/shared/shared-types';
+import {UserLocation, UserRole} from '@backend/shared/shared-types';
 import {ApiProperty} from '@nestjs/swagger';
+import {Gender, UserFitnessLevel, WorkoutType} from '@prisma/client';
 
 export class TrainerUserRdo {
   @ApiProperty({
@@ -33,12 +34,12 @@ export class TrainerUserRdo {
   public description?: string;
 
   @ApiProperty({
-    enum: UserGender,
+    enum: Gender,
     description: 'User\'s gender',
     example: 'unimportant',
   })
   @Expose()
-  public gender: UserGender;
+  public gender: Gender;
 
   @ApiProperty({
     description: 'User birth date',

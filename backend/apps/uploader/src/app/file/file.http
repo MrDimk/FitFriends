@@ -1,0 +1,17 @@
+# Upload some file
+POST http://localhost:3005/api/files/upload HTTP/1.1
+Content-Type: multipart/form-data; boundary=WebKitFormBoundary
+
+--WebKitFormBoundary
+Content-Disposition: form-data; name="file"; filename="1.png"
+Content-Type: image/png
+
+< ../../../../../static/1.png
+--WebKitFormBoundary--
+
+###
+
+# Get file by ID
+GET http://localhost:3005/api/files/64b47a900a87f2bfc5cd15fd HTTP/1.1
+
+###

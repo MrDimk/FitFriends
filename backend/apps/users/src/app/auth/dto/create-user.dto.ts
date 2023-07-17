@@ -1,14 +1,15 @@
 import {
-  UserFitnessLevel,
-  UserGender,
+  // UserFitnessLevel,
+  // UserGender,
   UserLocation,
   UserRole,
-  WorkoutTime,
-  WorkoutType
+  // WorkoutTime,
+  // WorkoutType
 } from '@backend/shared/shared-types';
 import {ApiProperty} from '@nestjs/swagger';
 import {IsEmail, IsISO8601, IsString, Length} from 'class-validator';
 import {USER_FIELDS, USER_VALIDATION_ERRORS} from '../auth.const';
+import {Gender, UserFitnessLevel, WorkoutTime, WorkoutType} from '@prisma/client';
 
 export class CreateUserDto {
   @ApiProperty({
@@ -19,18 +20,16 @@ export class CreateUserDto {
   public email: string;
 
   @ApiProperty({
-    enum: UserFitnessLevel,
     description: 'User\'s physical fitness level',
     example: 'beginner',
   })
   public fitnessLevel: UserFitnessLevel;
 
   @ApiProperty({
-    enum: UserGender,
     description: 'User\'s gender',
     example: 'unimportant',
   })
-  public gender: UserGender;
+  public gender: Gender;
 
   @ApiProperty({
     enum: UserLocation,
@@ -78,8 +77,7 @@ export class CreateUserDto {
   @ApiProperty({
     description: 'The types of workouts the user prefers',
     type: 'array',
-    items: {type: 'string'},
-    enum: WorkoutType
+    items: {type: 'string'}
   })
   public workoutTypes: WorkoutType[];
 
@@ -96,7 +94,6 @@ export class CreateUserDto {
   public pageImage?: string;
 
   @ApiProperty({
-    enum: WorkoutTime,
     description: 'User\'s preferred workout duration',
     example: 'medium',
   })

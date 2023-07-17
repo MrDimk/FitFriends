@@ -3,10 +3,9 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {
   CommonUserInterface,
   TrainerUserInterface,
-  UserFitnessLevel,
-  UserGender,
-  UserLocation, UserRole, WorkoutTime, WorkoutType
+  UserLocation, UserRole
 } from '@backend/shared/shared-types';
+import {Gender, UserFitnessLevel, WorkoutTime, WorkoutType} from '@prisma/client';
 
 @Schema({
   collection: 'users',
@@ -26,9 +25,9 @@ export class UserModel extends Document implements CommonUserInterface, TrainerU
   @Prop({
     required: true,
     type: String,
-    enum: UserGender
+    enum: Gender
   })
-  public gender: UserGender;
+  public gender: Gender;
 
   @Prop({
     required: true,

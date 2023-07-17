@@ -1,5 +1,4 @@
-export enum UserFitnessLevel {
-  Beginner = 'beginner',
-  Intermediate = 'intermediate',
-  Professional = 'professional'
-}
+export type UserFitnessLevel =
+  'beginner' |
+  'intermediate' |
+  'professional';

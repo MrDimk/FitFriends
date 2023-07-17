@@ -1,8 +1,8 @@
 import {UserRole} from './user-role.enum';
 import {UserLocation} from './user-location.enum';
 import {UserFitnessLevel} from './user-fitness-level.enum';
-import {WorkoutType} from './workout-type.enum';
-import {UserGender} from './user-gender.enum';
+import {WorkoutType} from './workout-type.type';
+import {UserGender} from './user-gender.type';
 
 export interface UserInterface {
   _id?: string;
