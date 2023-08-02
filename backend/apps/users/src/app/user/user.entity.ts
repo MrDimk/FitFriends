@@ -87,17 +87,3 @@ export class UserEntity implements CommonUserInterface, TrainerUserInterface {
     }
   }
 }
-
-// _id?: string;
-// name: string;
-// email: string;
-// description?: string;
-// gender: string;
-// birthDate?: Date;
-// role: UserRole;
-// location: UserLocation;
-// passwordHash: string;
-// avatarImage?: string;
-// pageImage?: string;
-// fitnessLevel: UserFitnessLevel;
-// workoutTypes: WorkoutType[];

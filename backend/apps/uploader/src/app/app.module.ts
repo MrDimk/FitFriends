@@ -4,7 +4,9 @@ import {ConfigUploaderModule, getMongooseOptions} from '@backend/config/config-u
 import {MongooseModule} from '@nestjs/mongoose';
 
 @Module({
-  imports: [FileModule, ConfigUploaderModule,
+  imports: [
+    FileModule,
+    ConfigUploaderModule,
     MongooseModule.forRootAsync(
       getMongooseOptions()
     )],

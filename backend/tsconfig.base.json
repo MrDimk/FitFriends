@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@backend/config/config-notify": [
+        "libs/config/config-notify/src/index.ts"
+      ],
       "@backend/config/config-uploader": [
         "libs/config/config-uploader/src/index.ts"
       ],

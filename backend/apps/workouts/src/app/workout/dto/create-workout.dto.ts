@@ -1,6 +1,5 @@
 import {ApiProperty} from '@nestjs/swagger';
-import {IsBoolean, IsEnum, IsIn, IsInt, IsNumber, IsString, Length, Matches, Max, Min} from 'class-validator';
-// import {UserFitnessLevel, UserGender, WorkoutTime, WorkoutType} from '@backend/shared/shared-types';
+import {IsBoolean, IsEnum, IsInt, IsNumber, IsString, Length, Matches, Max, Min} from 'class-validator';
 import {WORKOUT_FIELDS, WORKOUT_VALIDATION_ERRORS} from '../workout.const';
 import {Gender, UserFitnessLevel, WorkoutTime, WorkoutType} from '@prisma/client';
 

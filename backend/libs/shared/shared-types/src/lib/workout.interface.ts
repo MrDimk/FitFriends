@@ -1,7 +1,7 @@
-import { UserFitnessLevel } from './user-fitness-level.enum';
-import { UserGender } from './user-gender.type';
-import { WorkoutTime } from './workout-time.type';
-import { WorkoutType } from './workout-type.type';
+import {UserFitnessLevel} from './user-fitness-level.enum';
+import {UserGender} from './user-gender.type';
+import {WorkoutTime} from './workout-time.type';
+import {WorkoutType} from './workout-type.type';
 
 export interface WorkoutInterface {
   workoutId?: number;

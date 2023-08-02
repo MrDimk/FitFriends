@@ -10,6 +10,7 @@ import {LoggedUserRdo} from './rdo/logged-user.rdo';
 import {ApiResponse, ApiTags, getSchemaPath} from '@nestjs/swagger';
 import {MongoidValidationPipe} from '@backend/shared/shared-pipes';
 import {JwtAuthGuard} from './guards/jwt-auth.guard';
+import {CreateSubscriberDto} from '../notify/dto/create-subscriber.dto';
 
 @ApiTags('Authentication')
 @Controller('auth')
@@ -67,5 +68,21 @@ export class AuthController {
     } else if(existUser.role === UserRole.Trainer) {
       return fillObject(TrainerUserRdo, existUser);
     }
+  }
+
+  @ApiResponse({
+    type: LoggedUserRdo,
+    status: HttpStatus.OK,
+    description: 'User has been successfully logged.'
+  })
+  @ApiResponse({
+    status: HttpStatus.UNAUTHORIZED,
+    description: 'Password or Login is wrong.',
+  })
+  @Post('subscribe')
+  public async subscribe(@Body() dto: CreateSubscriberDto) {
+    const verifiedUser = await this.authService.verifyUser(dto);
+    const loggedUser = await this.authService.createUserToken(verifiedUser);
+    return fillObject(LoggedUserRdo, Object.assign(verifiedUser, loggedUser));
   }
 }

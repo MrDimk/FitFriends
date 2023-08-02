@@ -3,7 +3,6 @@ import {CRUDRepository} from '@backend/util/util-types';
 import {WorkoutEntity} from './workout.entity';
 import {WorkoutInterface} from '@backend/shared/shared-types';
 import {PrismaService} from '../prisma/prisma.service';
-import {when} from 'joi';
 import {WorkoutQuery} from './query/workout.query';
 import {WORKOUTS_LIST_LIMIT} from './workout.const';
 

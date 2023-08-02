@@ -28,6 +28,49 @@ model Workout {
   specialOffer    Boolean          @map("special_offer")
   createdAt       DateTime         @default(now()) @map("created_at")
   publishAt       DateTime         @updatedAt @map("publish_at")
+  orders          Order[]
+  Review          Review[]
+
+  @@map("workouts")
+}
+
+model Order {
+  orderId         Int           @id @default(autoincrement()) @map("order_id")
+  trainerId       String        @map("trainer_id")
+  userId          String        @map("user_id")
+  workoutId       Int
+  workout         Workout       @relation(fields: [workoutId], references: [workoutId])
+  createdAt       DateTime?     @default(now())
+  orderType       OrderType?
+  trainingPrice   Float
+  trainingsAmount Int
+  totalCost       Int?          @default(0)
+  paymentMethod   PaymentMethod
+
+  @@map("orders")
+}
+
+model Review {
+  reviewId  Int      @id @default(autoincrement()) @map("review_id")
+  userId    String   @map("user_id")
+  workoutId Int
+  workout   Workout  @relation(fields: [workoutId], references: [workoutId])
+  rating    Int
+  text      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("reviews")
+}
+
+model JointTraining {
+  jointTrainingId Int                 @id @default(autoincrement()) @map("joint_training_id")
+  initiatorId     String              @map("initiator_id")
+  userId          String              @map("user_id")
+  createdAt       DateTime            @default(now()) @map("created_at")
+  statusChangedAt DateTime            @map("status_changed_at")
+  status          JointTrainingStatus
+
+  @@map("joint_trainings")
 }
 
 enum UserFitnessLevel {
@@ -57,4 +100,20 @@ enum Gender {
   female
   male
   unimportant
+}
+
+enum PaymentMethod {
+  visa
+  mir
+  umoney
+}
+
+enum OrderType {
+  membership
+}
+
+enum JointTrainingStatus {
+  underReview
+  rejected
+  accepted
 }

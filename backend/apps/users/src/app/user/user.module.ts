@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import {Module} from '@nestjs/common';
 import {UserRepository} from './user.repository';
 import {UserModel, UserSchema} from './user.model';
 import {MongooseModule} from '@nestjs/mongoose';
