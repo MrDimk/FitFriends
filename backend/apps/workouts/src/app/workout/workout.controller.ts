@@ -1,10 +1,11 @@
-import {Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, Req} from '@nestjs/common';
 import {WorkoutService} from './workout.service';
 import {fillObject} from '@backend/util/util-core';
 import {WorkoutRdo} from './rdo/workout.rdo';
 import {WorkoutQuery} from './query/workout.query';
 import {CreateWorkoutDto} from './dto/create-workout.dto';
 import {UpdateWorkoutDto} from './dto/update-workout.dto';
+import {RequestWithUser} from '@backend/shared/shared-types';
 
 @Controller('workouts')
 export class WorkoutController {
@@ -25,7 +26,8 @@ export class WorkoutController {
   }
 
   @Post('/')
-  async create(@Body() dto: CreateWorkoutDto) {
+  async create(@Body() dto: CreateWorkoutDto, @Req() request: RequestWithUser) {
+    console.log(dto);
     const newWorkout = this.workoutService.createWorkout(dto);
     return fillObject(WorkoutRdo, newWorkout);
   }

@@ -19,3 +19,7 @@ export * from './lib/payment.method';
 export * from './lib/review.interface';
 export * from './lib/joint-training.interface';
 export * from './lib/joint-training-status.enum';
+export * from './lib/request-with.user';
+export * from './lib/token.interface';
+export * from './lib/refresh-token-payload.interface';
+export * from './lib/request-with-token-payload';

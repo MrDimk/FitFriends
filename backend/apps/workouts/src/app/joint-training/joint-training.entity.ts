@@ -1,4 +1,5 @@
-import {JointTrainingInterface, JointTrainingStatus} from '@backend/shared/shared-types';
+import {JointTrainingStatus} from '@prisma/client';
+import {JointTrainingInterface} from '@backend/shared/shared-types';
 
 export class JointTrainingEntity implements JointTrainingInterface {
   public jointTrainingId?: number;
@@ -9,7 +10,7 @@ export class JointTrainingEntity implements JointTrainingInterface {
   public status: JointTrainingStatus;
 
   constructor(jointTraining: JointTrainingInterface) {
-    this.fillEntity(jointTraining);
+    this.fillEntity({...jointTraining, status: jointTraining.status ?? JointTrainingStatus.underReview});
   }
 
   public fillEntity(jointTraining: JointTrainingInterface) {

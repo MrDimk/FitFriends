@@ -1,8 +1,7 @@
-import {ConflictException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
+import {ConflictException, Inject, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
 import {
   CommonUserInterface,
-  TokenPayloadInterface,
   TrainerUserInterface,
   UserInterface,
   UserRole
@@ -11,9 +10,13 @@ import dayjs from 'dayjs';
 import {AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG, INVALID_USER_ROLE} from './auth.const';
 import {UserEntity} from '../user/user.entity';
 import {LoginUserDto} from './dto/login-user.dto';
-import {ConfigService} from '@nestjs/config';
+import {ConfigService, ConfigType} from '@nestjs/config';
 import {UserRepository} from '../user/user.repository';
 import {JwtService} from '@nestjs/jwt';
+import {jwtConfig} from '@backend/config/config-users';
+import {createJWTPayload} from '@backend/util/util-core';
+import {RefreshTokenService} from '../refresh-token/refresh-token.service';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class AuthService {
@@ -21,10 +24,13 @@ export class AuthService {
     private readonly userRepository: UserRepository,
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
+    @Inject(jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>,
+    private readonly refreshTokenService: RefreshTokenService
   ) {
   }
 
   public async register(dto: CreateUserDto) {
+    console.log('Auth service register(dto)', dto);
     const {role, password, ...userData} = dto;
 
     const user = {
@@ -77,15 +83,18 @@ export class AuthService {
   }
 
   public async createUserToken(user: UserInterface) {
-    const payload: TokenPayloadInterface = {
-      sub: user._id,
-      email: user.email,
-      role: user.role,
-      name: user.name
-    };
+    const accessTokenPayload = createJWTPayload(user);
+    const refreshTokenPayload = { ...accessTokenPayload, tokenId: crypto.randomUUID() };
+    await this.refreshTokenService.createRefreshSession(refreshTokenPayload)
 
     return {
-      accessToken: await this.jwtService.signAsync(payload),
+      accessToken: await this.jwtService.signAsync(accessTokenPayload),
+      refreshToken: await this.jwtService.signAsync(refreshTokenPayload, {
+        secret: this.jwtOptions.refreshTokenSecret,
+        expiresIn: this.jwtOptions.refreshTokenExpiresIn
+      })
     }
   }
+
+
 }

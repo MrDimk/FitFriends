@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsNumber, IsEnum } from 'class-validator';
-import {JointTrainingStatus} from '@backend/shared/shared-types';
+import {JointTrainingStatus} from '@prisma/client';
 
 export class ChangeStatusJointTrainingDto {
   @IsNotEmpty()

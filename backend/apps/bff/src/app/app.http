@@ -1,0 +1,40 @@
+# Login user by email and password
+POST http://localhost:4000/api/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "traineruser4@example.com",
+  "password": "password123"
+}
+
+###
+
+# Get new JWT pair
+POST http://localhost:4000/api/users/refresh HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGE5ODQwYWUzZGJkZmM2OTFmMDA5M2MiLCJlbWFpbCI6InRyYWluZXJ1c2VyNEBleGFtcGxlLmNvbSIsInJvbGUiOiJUcmFpbmVyIiwibmFtZSI6IlRyYWluZXIgVXNlciIsInRva2VuSWQiOiIwNjc5MjhhNS1iOTlkLTRkZTMtYjM2Yy02ZDNmNGVmNDZmMDMiLCJpYXQiOjE2OTE3NjMxNTUsImV4cCI6MTY5MjM2Nzk1NX0.bNNLOf0xRKOQbbjzXo_w6ge2KoVZH7YSCqAtW6RPAH4
+
+###
+
+
+# Create a new workout
+POST http://localhost:4000/api/workouts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGE5ODQwYWUzZGJkZmM2OTFmMDA5M2MiLCJlbWFpbCI6InRyYWluZXJ1c2VyNEBleGFtcGxlLmNvbSIsInJvbGUiOiJUcmFpbmVyIiwibmFtZSI6IlRyYWluZXIgVXNlciIsImlhdCI6MTY5MTg3NTAwNSwiZXhwIjoxNjkxODc1OTA1fQ.qPxbgVSKqmVH5JBZy1AgKobMmp-WiAGQOPV6vvVIHQk
+Content-Type: application/json
+
+{
+  "title": "Everyday Yoga",
+  "backgroundImage": "uploads/image.png",
+  "level": "beginner",
+  "type": "yoga",
+  "duration": "short",
+  "price": 100,
+  "calories": 1200,
+  "description": "This is a great workout for beginners",
+  "targetGender": "unimportant",
+  "video": "workout.mp4",
+  "rating": 4,
+  "trainerId": "abc123",
+  "specialOffer": false
+}
+
+###

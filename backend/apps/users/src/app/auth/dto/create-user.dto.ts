@@ -1,10 +1,6 @@
 import {
-  // UserFitnessLevel,
-  // UserGender,
   UserLocation,
   UserRole,
-  // WorkoutTime,
-  // WorkoutType
 } from '@backend/shared/shared-types';
 import {ApiProperty} from '@nestjs/swagger';
 import {IsEmail, IsISO8601, IsString, Length} from 'class-validator';
