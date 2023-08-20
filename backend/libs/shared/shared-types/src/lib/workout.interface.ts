@@ -1,5 +1,5 @@
-import {UserFitnessLevel} from './user-fitness-level.enum';
-import {UserGender} from './user-gender.type';
+import {UserFitnessLevel} from './users/user-fitness-level.enum';
+import {UserGender} from './users/user-gender.type';
 import {WorkoutTime} from './workout-time.type';
 import {WorkoutType} from './workout-type.type';
 

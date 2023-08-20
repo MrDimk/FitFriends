@@ -74,7 +74,7 @@ export const getMockUser = (role: UserRole): CreateUserDto => {
     birthDate: getRandomDateIn(2023 - 60, 2023 - 18),
     role: UserRole.Trainer,
     location: getRandomElement(locations),
-    password: 'test',
+    password: 'password',
     avatarImage: `/images/avatar-${uniqString}.png`,
     pageImage: `/images/page-img-${uniqString}.png`,
     fitnessLevel: getRandomElement(levels),

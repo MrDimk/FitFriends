@@ -1,38 +1,28 @@
-import {
-  UserLocation,
-  UserRole,
-} from '@backend/shared/shared-types';
 import {ApiProperty} from '@nestjs/swagger';
-import {IsEmail, IsISO8601, IsString, Length} from 'class-validator';
-import {USER_FIELDS, USER_VALIDATION_ERRORS} from '../../../../../../libs/shared/shared-types/src/lib/users/auth.const';
+import {IsString, Length} from 'class-validator';
 import {Gender, UserFitnessLevel, WorkoutTime, WorkoutType} from '@prisma/client';
+import {UserLocation} from '../user-location.enum';
+import {USER_FIELDS, USER_VALIDATION_ERRORS} from '../auth.const';
 
-export class CreateUserDto {
-  @ApiProperty({
-    description: 'User unique address',
-    example: 'user@user.ru'
-  })
-  @IsEmail({}, { message: USER_VALIDATION_ERRORS.UserEmailNotValid })
-  public email: string;
-
+export class UpdateUserDto {
   @ApiProperty({
     description: 'User\'s physical fitness level',
     example: 'beginner',
   })
-  public fitnessLevel: UserFitnessLevel;
+  public fitnessLevel?: UserFitnessLevel;
 
   @ApiProperty({
     description: 'User\'s gender',
     example: 'unimportant',
   })
-  public gender: Gender;
+  public gender?: Gender;
 
   @ApiProperty({
     enum: UserLocation,
     description: 'One of the subway stations in SPb',
     example: 'Pionerskaya',
   })
-  public location: UserLocation;
+  public location?: UserLocation;
 
   @ApiProperty({
     description: 'User name',
@@ -40,7 +30,7 @@ export class CreateUserDto {
   })
   @IsString()
   @Length(USER_FIELDS.UserNameMin, USER_FIELDS.UserNameMax, { message: USER_VALIDATION_ERRORS.UserNameLength })
-  public name: string;
+  public name?: string;
 
   @ApiProperty({
     description: 'User description',
@@ -52,30 +42,14 @@ export class CreateUserDto {
     description: 'User birth date',
     example: '1980-03-01'
   })
-  @IsISO8601({}, { message: USER_VALIDATION_ERRORS.UserDateBirthNotValid })
   public birthDate?: Date;
-
-  @ApiProperty({
-    description: 'User password',
-    example: 'qwerty12345'
-  })
-  @IsString()
-  @Length(USER_FIELDS.PasswordMin, USER_FIELDS.PasswordMax, { message: USER_VALIDATION_ERRORS.UserPasswordLength })
-  public password: string;
-
-  @ApiProperty({
-    enum: UserRole,
-    description: 'User\'s role',
-    example: 'Trainer',
-  })
-  public role: UserRole;
 
   @ApiProperty({
     description: 'The types of workouts the user prefers',
     type: 'array',
     items: {type: 'string'}
   })
-  public workoutTypes: WorkoutType[];
+  public workoutTypes?: WorkoutType[];
 
   @ApiProperty({
     description: 'User avatar',

@@ -1,13 +1,13 @@
 import {ConflictException, Inject, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
 import {
-  CommonUserInterface,
-  TrainerUserInterface,
+  AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG,
+  CommonUserInterface, INVALID_USER_ROLE,
+  TrainerUserInterface, UpdateUserDto,
   UserInterface,
-  UserRole
+  UserRole, USERS_NOT_FOUND, UsersQueryDto
 } from '@backend/shared/shared-types';
 import dayjs from 'dayjs';
-import {AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG, INVALID_USER_ROLE} from './auth.const';
 import {UserEntity} from '../user/user.entity';
 import {LoginUserDto} from './dto/login-user.dto';
 import {ConfigService, ConfigType} from '@nestjs/config';
@@ -82,6 +82,14 @@ export class AuthService {
     return this.userRepository.findById(id);
   }
 
+  public async getUsers(userId: string, query: UsersQueryDto) {
+    const existUsers = await this.userRepository.findAll(userId, query);
+    if (!existUsers) {
+      throw new NotFoundException(USERS_NOT_FOUND);
+    }
+    return existUsers;
+  }
+
   public async createUserToken(user: UserInterface) {
     const accessTokenPayload = createJWTPayload(user);
     const refreshTokenPayload = { ...accessTokenPayload, tokenId: crypto.randomUUID() };
@@ -96,5 +104,15 @@ export class AuthService {
     }
   }
 
+  public async updateUser(id: string, dto: UpdateUserDto) {
+    const existUser = await this.userRepository.findById(id);
+
+    const updatedUser = new UserEntity({...existUser, ...dto});
+    if (!existUser) {
+      throw new ConflictException(AUTH_USER_NOT_FOUND);
+    }
+
+    return this.userRepository.update(id, updatedUser);
+  }
 
 }

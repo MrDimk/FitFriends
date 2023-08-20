@@ -1,11 +1,11 @@
-<mxfile host="Electron" modified="2023-07-12T19:06:53.573Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="5CkEFA3ljs3CBWo3OQI4" version="21.6.1" type="device">
+<mxfile host="Electron" modified="2023-08-20T07:48:31.300Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="avWWuM9sdPY065uTn4UH" version="21.6.8" type="device">
   <diagram name="Страница 1" id="hlILQuanGjLB2rlqUcfx">
     <mxGraphModel dx="2397" dy="1032" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Xg_cVoiJlZ407YM_Tam--1" value="API GATEWAY &lt;br&gt;(сервис bff)" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=15;verticalAlign=middle;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-320" y="420" width="180" height="80" as="geometry" />
+        <mxCell id="Xg_cVoiJlZ407YM_Tam--1" value="API GATEWAY(сервис bff)" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=15;verticalAlign=top;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-600" y="140" width="330" height="720" as="geometry" />
         </mxCell>
         <mxCell id="Xg_cVoiJlZ407YM_Tam--7" value="" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Tahoma;" parent="1" vertex="1">
           <mxGeometry x="409" y="120" width="60" height="60" as="geometry" />
@@ -131,7 +131,7 @@
         <mxCell id="81rwY3mGK5LgOC5ezEOb-43" value="1. Рассылка уведомлений" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Tahoma;" parent="81rwY3mGK5LgOC5ezEOb-42" vertex="1">
           <mxGeometry y="26" width="239" height="74" as="geometry" />
         </mxCell>
-        <mxCell id="81rwY3mGK5LgOC5ezEOb-48" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;dashPattern=8 8;" parent="1" edge="1">
+        <mxCell id="81rwY3mGK5LgOC5ezEOb-48" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.457;exitDx=0;exitDy=0;dashed=1;dashPattern=8 8;exitPerimeter=0;" parent="1" edge="1" source="Xg_cVoiJlZ407YM_Tam--1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-170" y="470" as="sourcePoint" />
             <mxPoint x="10" y="150" as="targetPoint" />
@@ -177,17 +177,17 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="81rwY3mGK5LgOC5ezEOb-68" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="-500" y="437.5" width="30" height="60" as="geometry" />
+          <mxGeometry x="-790" y="440" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="81rwY3mGK5LgOC5ezEOb-72" value="HTTP запросы" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-400" y="422.5" width="60" height="30" as="geometry" />
+          <mxGeometry x="-170" y="420" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="81rwY3mGK5LgOC5ezEOb-73" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-440" y="467" as="sourcePoint" />
-            <mxPoint x="-300" y="466.5" as="targetPoint" />
+            <mxPoint x="-750" y="470" as="sourcePoint" />
+            <mxPoint x="-610" y="469.5" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-440" y="467" />
+              <mxPoint x="-750" y="470" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -306,8 +306,53 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="tvPB46enMkeRJFCK9IrK-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="880" y="280" width="120" height="60" as="geometry" />
+        <mxCell id="4qXMxty9_H0B7X85AAD2-3" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;workouts.controller&lt;/b&gt;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;strokeColor=#6c8ebf;fontFamily=Tahoma;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="290" width="239" height="100" as="geometry">
+            <mxRectangle x="81" y="36" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-4" value="1. Создание, редактирование, удаление&lt;br&gt;2. Каталог тренировок&lt;br&gt;3. Уведомления о тренировках" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Tahoma;" vertex="1" parent="4qXMxty9_H0B7X85AAD2-3">
+          <mxGeometry y="26" width="239" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-5" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;users.controller&lt;br&gt;&lt;/b&gt;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;strokeColor=#6c8ebf;fontFamily=Tahoma;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="180" width="239" height="100" as="geometry">
+            <mxRectangle x="81" y="36" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-6" value="1. Создание, редактирование, удаление&lt;br&gt;2. Каталог тренировок&lt;br&gt;3. Уведомления о тренировках" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Tahoma;" vertex="1" parent="4qXMxty9_H0B7X85AAD2-5">
+          <mxGeometry y="26" width="239" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-7" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;friends.controller&lt;br&gt;&lt;/b&gt;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;strokeColor=#6c8ebf;fontFamily=Tahoma;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="400" width="239" height="100" as="geometry">
+            <mxRectangle x="81" y="36" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-8" value="1. Создание, редактирование, удаление&lt;br&gt;2. Каталог тренировок&lt;br&gt;3. Уведомления о тренировках" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Tahoma;" vertex="1" parent="4qXMxty9_H0B7X85AAD2-7">
+          <mxGeometry y="26" width="239" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-9" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;orders.controller&lt;/b&gt;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;strokeColor=#6c8ebf;fontFamily=Tahoma;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="510" width="239" height="100" as="geometry">
+            <mxRectangle x="81" y="36" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-10" value="1. Создание, редактирование, удаление&lt;br&gt;2. Каталог тренировок&lt;br&gt;3. Уведомления о тренировках" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Tahoma;" vertex="1" parent="4qXMxty9_H0B7X85AAD2-9">
+          <mxGeometry y="26" width="239" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-11" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;joint-trainings.controller&lt;/b&gt;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;strokeColor=#6c8ebf;fontFamily=Tahoma;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="620" width="239" height="100" as="geometry">
+            <mxRectangle x="81" y="36" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-12" value="1. Создание, редактирование, удаление&lt;br&gt;2. Каталог тренировок&lt;br&gt;3. Уведомления о тренировках" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Tahoma;" vertex="1" parent="4qXMxty9_H0B7X85AAD2-11">
+          <mxGeometry y="26" width="239" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-13" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;reviews.controller&lt;/b&gt;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;strokeColor=#6c8ebf;fontFamily=Tahoma;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="730" width="239" height="100" as="geometry">
+            <mxRectangle x="81" y="36" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4qXMxty9_H0B7X85AAD2-14" value="1. Создание, редактирование, удаление&lt;br&gt;2. Каталог тренировок&lt;br&gt;3. Уведомления о тренировках" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Tahoma;" vertex="1" parent="4qXMxty9_H0B7X85AAD2-13">
+          <mxGeometry y="26" width="239" height="74" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

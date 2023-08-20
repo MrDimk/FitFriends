@@ -58,13 +58,8 @@ Content-Type: application/json
 
 ###
 
-# Get user by ID
-GET http://localhost:3004/api/auth/64a713b6c0219632e0df8071 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGE5ODQwYWUzZGJkZmM2OTFmMDA5M2MiLCJlbWFpbCI6InRyYWluZXJ1c2VyNEBleGFtcGxlLmNvbSIsInJvbGUiOiJUcmFpbmVyIiwibmFtZSI6IlRyYWluZXIgVXNlciIsImlhdCI6MTY5MTU4MTUzMywiZXhwIjoxNjkxNTgyNDMzfQ.SHGSZeA4ZlfP6Dt4KD802xORMtlHXDc3pWalJXBM0pc
-
-###
-
-# Login user by email and password
+# Login user
+# @name login
 POST http://localhost:3004/api/auth/login HTTP/1.1
 Content-Type: application/json
 
@@ -72,15 +67,39 @@ Content-Type: application/json
   "email": "traineruser4@example.com",
   "password": "password123"
 }
+###
+@accessToken = {{login.response.body.accessToken}}
+@refreshToken = {{login.response.body.refreshToken}}
+###
+
+# Get user by ID
+GET http://localhost:3004/api/auth/64a713b6c0219632e0df8071 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+
+###
+
+#Get users list
+GET http://localhost:3004/api/auth?location=Udelnaya&specialization=yoga&trainingLevel=beginner&role=Trainer&limit=10&page=2 HTTP/1.1
+Authorization: Bearer {{accessToken}}
 
 ###
 
 # Get new JWT pair
 POST http://localhost:3004/api/auth/refresh HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGE5ODQwYWUzZGJkZmM2OTFmMDA5M2MiLCJlbWFpbCI6InRyYWluZXJ1c2VyNEBleGFtcGxlLmNvbSIsInJvbGUiOiJUcmFpbmVyIiwibmFtZSI6IlRyYWluZXIgVXNlciIsInRva2VuSWQiOiIzMjBhNzFkNi1mMjZiLTRiMGMtOGQ0Mi1kM2U5ZWM0NjFkZDAiLCJpYXQiOjE2OTE1ODE1MzMsImV4cCI6MTY5MjE4NjMzM30.yOAgyIqiRCMrbC7aBWWul948laXdmHaN2EexgJcaIm4
+Authorization: Bearer {{refreshToken}}
 ###
 
-# Get new JWT pair
+# Check authentication
 POST http://localhost:3004/api/auth/check HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGE5ODQwYWUzZGJkZmM2OTFmMDA5M2MiLCJlbWFpbCI6InRyYWluZXJ1c2VyNEBleGFtcGxlLmNvbSIsInJvbGUiOiJUcmFpbmVyIiwibmFtZSI6IlRyYWluZXIgVXNlciIsImlhdCI6MTY5MTcwMTI3MiwiZXhwIjoxNjkxNzAyMTcyfQ.nuIYXDuxsPCM5cf7if_Q12awR9B1-0dSiuwgxb_Ek98
+Authorization: Bearer {{accessToken}}
 ###
+
+# Update user info
+PATCH http://localhost:3004/api/auth/update/64a9840ae3dbdfc691f0093c HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "name": "User updated",
+  "description": "I'm a updated regular user description"
+}

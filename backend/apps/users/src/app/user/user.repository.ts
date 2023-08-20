@@ -2,7 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {Model} from 'mongoose';
 import {CRUDRepository} from '@backend/util/util-types';
 import {InjectModel} from '@nestjs/mongoose';
-import {CommonUserInterface, TrainerUserInterface} from '@backend/shared/shared-types';
+import {CommonUserInterface, TrainerUserInterface, USERS_LIST_LIMIT, UsersQueryDto} from '@backend/shared/shared-types';
 import {UserEntity} from './user.entity';
 import {UserModel} from './user.model';
 
@@ -33,6 +33,25 @@ export class UserRepository implements CRUDRepository<UserEntity, string, Common
     return this.userModel
       .findOne({email})
       .exec();
+  }
+
+  public async findAll(userId: string, query: UsersQueryDto) {
+    const {limit = USERS_LIST_LIMIT, page = 1, ...filters} = query;
+    const filter = {
+      _id: {$ne: userId},
+      ...filters
+    };
+
+    const skip = (page - 1) * limit;
+    const users = await this.userModel.find(filter)
+      .sort({createdAt: -1}) // Todo add sort to UsersQueryDto
+      .skip(skip)
+      .limit(limit)
+      .exec();
+
+    const totalCount = await this.userModel.countDocuments(filter).exec();
+
+    return {users, totalCount, page, limit};
   }
 
   public async update(id: string, item: UserEntity): Promise<CommonUserInterface | TrainerUserInterface> {

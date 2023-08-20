@@ -26,8 +26,7 @@ export class WorkoutController {
   }
 
   @Post('/')
-  async create(@Body() dto: CreateWorkoutDto, @Req() request: RequestWithUser) {
-    console.log(dto);
+  async create(@Body() dto: CreateWorkoutDto, @Req() { user }: RequestWithUser) {
     const newWorkout = this.workoutService.createWorkout(dto);
     return fillObject(WorkoutRdo, newWorkout);
   }

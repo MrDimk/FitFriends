@@ -1,6 +1,6 @@
 import {ApiProperty} from '@nestjs/swagger';
 import {IsEmail, IsString, Length} from 'class-validator';
-import {USER_FIELDS, USER_VALIDATION_ERRORS} from '../auth.const';
+import {USER_FIELDS, USER_VALIDATION_ERRORS} from '../../../../../../libs/shared/shared-types/src/lib/users/auth.const';
 
 export class LoginUserDto {
 

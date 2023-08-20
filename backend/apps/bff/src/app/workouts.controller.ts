@@ -17,7 +17,7 @@ export class WorkoutsController {
   }
 
   @UseGuards(CheckAuthGuard)
-  @Roles(UserRole.User)
+  @Roles(UserRole.Trainer)
   @UseInterceptors(UserIdInterceptor)
   @Post('/')
   public async createWorkout(@Body() dto: CreateWorkoutDto, @Req() { user }) {
